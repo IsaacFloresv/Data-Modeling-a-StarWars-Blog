@@ -18,9 +18,9 @@ class Planets(Base):
     gravity = Column(Integer)
     population = Column(Integer)
     climate = Column(Integer)
-    terrain = Column(String(250))
-    surface_water = Column(String(250))
-    language = Column(String(250))
+    terrain = Column(String(150))
+    surface_water = Column(String(150))
+    language = Column(String(150))
 
 
     def to_dict(self):
@@ -30,17 +30,17 @@ class Species(Base):
     __tablename__ = 'species'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), unique=True)
-    classification = Column(String(250))
-    designation = Column(String(250))
+    name = Column(String(150), unique=True)
+    classification = Column(String(150))
+    designation = Column(String(150))
     average_height = Column(Integer)
     average_lifespan = Column(Integer)
-    hair_colors = Column(String(250))
-    skin_colors = Column(String(250))
-    eye_colors = Column(String(250))
-    homeplanet_id = Column(String(250), ForeignKey('planets.id'))
+    hair_colors = Column(String(150))
+    skin_colors = Column(String(150))
+    eye_colors = Column(String(150))
+    homeplanet_id = Column(String(150), ForeignKey('planets.id'))
     homeplanet = relationship(Planets, primaryjoin=homeplanet_id == Planets.id)
-    language = Column(String(250))
+    language = Column(String(150))
 
 
     def to_dict(self):
@@ -68,10 +68,10 @@ class Vehicles(Base):
     __tablename__ = 'vehicles'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False, unique=True)
-    model = Column(String(250), nullable=False)
-    starship_class = Column(String(250))
-    manufacturer  = Column(String(250))
+    name = Column(String(150), nullable=False, unique=True)
+    model = Column(String(150), nullable=False)
+    starship_class = Column(String(150))
+    manufacturer  = Column(String(150))
     cost_in_credits = Column(Integer)
     passengers = Column(Integer)
     max_atmosphering_speed = Column(Integer)
@@ -88,7 +88,7 @@ class Users(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    username = Column(String(250), unique=True, nullable=False)
+    username = Column(String(150), unique=True, nullable=False)
     password = Column(String(50), nullable=False)
     favorites_id = Column(Integer, ForeignKey('favorites_by_user.id'))
     favorites = relationship("Favorites_by_user", back_populates="id")
